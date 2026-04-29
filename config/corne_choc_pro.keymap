@@ -69,6 +69,19 @@
             tapping-term-ms = <150>;
             flavor = "balanced";
         };
+
+        tog_on: toggle_layer_on_only {
+            compatible = "zmk,behavior-toggle-layer";
+            label = "TOG_ON";
+            #binding-cells = <1>;
+        };
+
+        tog_off: toggle_layer_off_only {
+            compatible = "zmk,behavior-toggle-layer";
+            label = "TOG_OFF";
+            #binding-cells = <1>;
+            toggle-mode = "off";
+        };
     };
 
     keymap {
@@ -84,11 +97,22 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T      &kp C_MUTE  &kp C_PP  &kp Y      &um_U  &kp I      &um_O    &kp P     &kp BSPC
-&kp LCTRL  &um_A  &um_S  &kp D     &kp F  &kp G      &kp LALT    &kp RALT  &kp H      &kp J  &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B                            &kp N      &kp M  &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 1  &sf 1 RET                        &kp SPACE  &mo 2  &kp RALT
+&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T      &kp C_MUTE  &kp C_PP  &kp Y      &um_U  &kp I         &um_O    &kp P     &kp BSPC
+&kp LCTRL  &um_A  &um_S  &kp D     &kp F  &kp G      &kp LALT    &kp RALT  &kp H      &kp J  &kp K         &kp L    &kp SEMI  &kp SQT
+&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B                            &kp N      &kp M  &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
+                         &kp LGUI  &mo 2  &sf 2 RET                        &kp SPACE  &mo 3  &kp LEFT_ALT
             >;
+        };
+
+        colemak_layer {
+            bindings = <
+&kp TAB    &kp Q  &kp W  &kp F         &kp P  &kp B    &trans  &trans  &kp J      &kp L  &um_U         &kp Y    &kp SEMI  &kp BSPC
+&kp LCTRL  &um_A  &kp R  &um_S         &kp T  &kp G    &trans  &trans  &kp M      &kp N  &kp E         &kp I    &um_O     &kp SQT
+&kp LSHFT  &kp Z  &kp X  &kp C         &kp D  &kp V                    &kp K      &kp H  &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
+                         &kp LEFT_GUI  &mo 2  &kp RET                  &kp SPACE  &mo 3  &kp LEFT_ALT
+            >;
+
+            label = "COLEMAK";
         };
 
         lower_layer {
@@ -101,7 +125,7 @@
             //                    | GUI |     | SPC   |        | ENT   |     | ALT |
 
             bindings = <
-&kp TAB    &kp N1        &kp N2           &kp N3        &kp N4        &kp N5          &kp LCTRL  &kp RCTRL  &kp N6    &kp N7    &kp N8     &kp N9     &kp N0  &kp BSPC
+&kp TAB    &kp N1        &kp N2           &kp N3        &kp N4        &kp N5          &kp LCTRL  &kp RCTRL  &kp N6    &kp N7    &kp N8     &kp N9     &kp N0  &kp DELETE
 &kp LCTRL  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LALT   &kp RALT   &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT  &trans  &trans
 &kp LSHFT  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                        &trans    &trans    &trans     &trans     &trans  &trans
                                           &kp LGUI      &trans        &kp SPACE                             &kp LGUI  &trans    &kp SPACE
@@ -128,60 +152,10 @@
         adjust_layer {
             display-name = "ADJUST";
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_2 {
-            display-name = "EXTRA 2";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_3 {
-            display-name = "EXTRA 3";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_4 {
-            display-name = "EXTRA 4";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_5 {
-            display-name = "EXTRA 5";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
-            >;
-        };
-
-        extra_layer_6 {
-            display-name = "EXTRA 6";
-            bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                  &trans  &trans  &trans  &trans  &trans  &trans
-                        &trans  &trans  &trans                  &trans  &trans  &trans
+&tog_on 1  &trans        &trans           &trans        &trans        &trans          &trans  &trans  &trans  &trans      &trans  &trans  &trans  &tog_off 1
+&trans     &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans
+&trans     &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &trans  &kp K_MUTE  &trans  &trans  &trans  &trans
+                                          &trans        &trans        &trans                          &trans  &trans      &trans
             >;
         };
     };
@@ -190,8 +164,8 @@
         compatible = "zmk,conditional-layers";
 
         ADJUST {
-            if-layers = <1 2>;
-            then-layer = <3>;
+            if-layers = <2 3>;
+            then-layer = <4>;
         };
     };
 };
