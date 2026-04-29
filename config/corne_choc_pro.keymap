@@ -82,6 +82,25 @@
             #binding-cells = <1>;
             toggle-mode = "off";
         };
+
+        td: td {
+            compatible = "zmk,behavior-hold-tap";
+            label = "TD";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <150>;
+            flavor = "tap-preferred";
+        };
+    };
+
+    macros {
+        win_mute: win_mute {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp RG(RA(K))>;
+            label = "WIN_MUTE";
+        };
     };
 
     keymap {
@@ -97,19 +116,19 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp E     &kp R  &kp T      &kp C_MUTE  &kp C_PP  &kp Y      &um_U  &kp I         &um_O    &kp P     &kp BSPC
-&kp LCTRL  &um_A  &um_S  &kp D     &kp F  &kp G      &kp LALT    &kp RALT  &kp H      &kp J  &kp K         &kp L    &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C     &kp V  &kp B                            &kp N      &kp M  &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
-                         &kp LGUI  &mo 2  &sf 2 RET                        &kp SPACE  &mo 3  &kp LEFT_ALT
+&kp TAB                   &kp Q  &kp W  &kp E     &kp R  &kp T      &kp C_MUTE  &kp C_PP  &kp Y        &um_U  &kp I         &um_O    &kp P     &kp BSPC
+&td LEFT_SHIFT BACKSPACE  &um_A  &um_S  &kp D     &kp F  &kp G      &kp LALT    &kp RALT  &kp H        &kp J  &kp K         &kp L    &kp SEMI  &kp SQT
+&kp LCTRL                 &kp Z  &kp X  &kp C     &kp V  &kp B                            &kp N        &kp M  &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
+                                        &kp LGUI  &mo 2  &sf 2 RET                        &sf 3 SPACE  &mo 3  &kp LEFT_ALT
             >;
         };
 
         colemak_layer {
             bindings = <
-&kp TAB    &kp Q  &kp W  &kp F         &kp P  &kp B    &trans  &trans  &kp J      &kp L  &um_U         &kp Y    &kp SEMI  &kp BSPC
-&kp LCTRL  &um_A  &kp R  &um_S         &kp T  &kp G    &trans  &trans  &kp M      &kp N  &kp E         &kp I    &um_O     &kp SQT
-&kp LSHFT  &kp Z  &kp X  &kp C         &kp D  &kp V                    &kp K      &kp H  &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
-                         &kp LEFT_GUI  &mo 2  &kp RET                  &kp SPACE  &mo 3  &kp LEFT_ALT
+&kp TAB                   &kp Q  &kp W  &kp F         &kp P  &kp B    &trans  &trans  &kp J      &kp L  &um_U         &kp Y    &kp SEMI  &kp BSPC
+&td LEFT_SHIFT BACKSPACE  &um_A  &kp R  &um_S         &kp T  &kp G    &trans  &trans  &kp M      &kp N  &kp E         &kp I    &um_O     &kp SQT
+&kp LCTRL                 &kp Z  &kp X  &kp C         &kp D  &kp V                    &kp K      &kp H  &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
+                                        &kp LEFT_GUI  &mo 2  &kp RET                  &kp SPACE  &mo 3  &kp LEFT_ALT
             >;
 
             label = "COLEMAK";
@@ -125,10 +144,10 @@
             //                    | GUI |     | SPC   |        | ENT   |     | ALT |
 
             bindings = <
-&kp TAB    &kp N1        &kp N2           &kp N3        &kp N4        &kp N5          &kp LCTRL  &kp RCTRL  &kp N6    &kp N7    &kp N8     &kp N9     &kp N0  &kp DELETE
-&kp LCTRL  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LALT   &kp RALT   &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT  &trans  &trans
-&kp LSHFT  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                        &trans    &trans    &trans     &trans     &trans  &trans
-                                          &kp LGUI      &trans        &kp SPACE                             &kp LGUI  &trans    &kp SPACE
+&trans  &kp N1        &kp N2           &kp N3        &kp N4        &kp N5          &kp LCTRL  &kp RCTRL  &kp N6    &kp N7    &kp N8     &kp N9     &kp N0  &kp DELETE
+&trans  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LALT   &kp RALT   &kp LEFT  &kp DOWN  &kp UP     &kp RIGHT  &trans  &trans
+&trans  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                        &trans    &trans    &trans     &trans     &trans  &trans
+                                       &kp LGUI      &trans        &kp SPACE                             &kp LGUI  &trans    &kp SPACE
             >;
         };
 
@@ -142,20 +161,20 @@
             //                    | GUI |     | SPC |               | ENT |     | ALT |
 
             bindings = <
-&kp TAB    &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp LCTRL  &kp RCTRL  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &trans    &trans  &trans    &trans    &trans     &kp LALT   &kp RALT   &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LSHFT  &trans    &trans  &trans    &trans    &trans                           &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                             &kp LGUI  &trans    &kp SPACE                        &kp RET    &trans     &kp RALT
+&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp LCTRL  &kp RCTRL  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
+&trans  &trans    &trans  &trans    &trans    &trans     &kp LALT   &kp RALT   &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&trans  &trans    &trans  &trans    &trans    &trans                           &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
+                          &trans    &trans    &kp SPACE                        &kp RET    &trans     &trans
             >;
         };
 
         adjust_layer {
             display-name = "ADJUST";
             bindings = <
-&tog_on 1  &trans        &trans           &trans        &trans        &trans          &trans  &trans  &trans  &trans      &trans  &trans  &trans  &tog_off 1
-&trans     &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans      &trans  &trans  &trans  &trans
-&trans     &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &trans  &kp K_MUTE  &trans  &trans  &trans  &trans
-                                          &trans        &trans        &trans                          &trans  &trans      &trans
+&tog_on 1  &trans        &trans           &trans        &trans        &trans          &trans  &trans  &trans  &trans     &trans  &trans  &trans  &tog_off 1
+&trans     &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans     &trans  &trans  &trans  &trans
+&trans     &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &trans  &win_mute  &trans  &trans  &trans  &trans
+                                          &trans        &trans        &trans                          &trans  &trans     &trans
             >;
         };
     };
