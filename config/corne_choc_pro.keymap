@@ -54,7 +54,7 @@
         um_O: um_O {
             compatible = "zmk,behavior-mod-morph";
             label = "UM_O";
-            bindings = <&kp O>, <&kp RA(O)>;
+            bindings = <&kp O>, <&kp RA(P)>;
 
             #binding-cells = <0>;
             mods = <(MOD_LALT)>;
@@ -92,13 +92,31 @@
             tapping-term-ms = <150>;
             flavor = "tap-preferred";
         };
+
+        quit: quit_programm {
+            compatible = "zmk,behavior-mod-morph";
+            label = "QUIT";
+            bindings = <&kp Q>, <&kp LA(F4)>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LALT)>;
+        };
+
+        refresh: refresh {
+            compatible = "zmk,behavior-mod-morph";
+            label = "REFRESH";
+            bindings = <&kp R>, <&kp F5>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_LCTL)>;
+        };
     };
 
     macros {
         win_mute: win_mute {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp RG(RA(K))>;
+            bindings = <&kp LA(LG(K))>;
             label = "WIN_MUTE";
         };
     };
@@ -116,7 +134,7 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB                   &kp Q  &kp W  &kp E     &kp R        &kp T      &kp C_MUTE  &kp C_PP  &kp Y        &um_U        &kp I         &um_O    &kp P     &kp BSPC
+&kp TAB                   &quit  &kp W  &kp E     &refresh     &kp T      &kp C_MUTE  &kp C_PP  &kp Y        &um_U        &kp I         &um_O    &kp P     &kp BSPC
 &td LEFT_SHIFT BACKSPACE  &um_A  &um_S  &kp D     &kp F        &kp G      &kp LALT    &kp RALT  &kp H        &kp J        &kp K         &kp L    &kp SEMI  &kp SQT
 &kp LCTRL                 &kp Z  &kp X  &kp C     &kp V        &kp B                            &kp N        &kp M        &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
                                         &kp LGUI  &sf 2 SPACE  &sf 2 RET                        &sf 3 ENTER  &sf 3 SPACE  &kp LEFT_ALT
@@ -171,10 +189,10 @@
         adjust_layer {
             display-name = "ADJUST";
             bindings = <
-&tog_on 1  &trans        &trans           &trans        &trans        &trans          &trans  &trans  &trans  &trans     &trans  &trans  &trans  &tog_off 1
-&trans     &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans     &trans  &trans  &trans  &trans
-&trans     &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &trans  &win_mute  &trans  &trans  &trans  &trans
-                                          &trans        &trans        &trans                          &trans  &trans     &trans
+&kp F1      &kp F2        &kp F3           &kp F4        &kp F5        &kp F6          &trans  &kp F7  &kp F7  &kp F8     &kp F9  &kp F10  &kp F11  &kp F12
+&tog_on 1   &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans     &trans  &trans   &trans   &trans
+&tog_off 1  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &trans  &win_mute  &trans  &trans   &trans   &trans
+                                           &trans        &trans        &trans                          &trans  &trans     &trans
             >;
         };
     };
