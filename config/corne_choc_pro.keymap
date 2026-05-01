@@ -134,19 +134,19 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB                   &quit  &kp W  &kp E     &refresh     &kp T      &kp C_MUTE  &kp C_PP  &kp Y        &um_U        &kp I         &um_O    &kp P     &kp BSPC
-&td LEFT_SHIFT BACKSPACE  &um_A  &um_S  &kp D     &kp F        &kp G      &kp LALT    &kp RALT  &kp H        &kp J        &kp K         &kp L    &kp SEMI  &kp SQT
-&kp LCTRL                 &kp Z  &kp X  &kp C     &kp V        &kp B                            &kp N        &kp M        &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
-                                        &kp LGUI  &sf 2 SPACE  &sf 2 RET                        &sf 3 ENTER  &sf 3 SPACE  &kp LEFT_ALT
+&kp TAB                     &quit  &kp W  &kp E     &refresh     &kp T      &kp C_MUTE  &kp C_PP  &kp Y        &um_U        &kp I          &um_O    &kp P     &kp BSPC
+&td LEFT_CONTROL BACKSPACE  &um_A  &um_S  &kp D     &kp F        &kp G      &kp LALT    &kp RALT  &kp H        &kp J        &kp K          &kp L    &kp SEMI  &kp SQT
+&kp LEFT_SHIFT              &kp Z  &kp X  &kp C     &kp V        &kp B                            &kp N        &kp M        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
+                                          &kp LGUI  &sf 2 SPACE  &sf 2 RET                        &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
             >;
         };
 
         colemak_layer {
             bindings = <
-&kp TAB                   &kp Q  &kp W  &kp F         &kp P        &kp B        &trans  &trans  &kp J        &kp L        &um_U         &kp Y    &kp SEMI  &kp BSPC
-&td LEFT_SHIFT BACKSPACE  &um_A  &kp R  &um_S         &kp T        &kp G        &trans  &trans  &kp M        &kp N        &kp E         &kp I    &um_O     &kp SQT
-&kp LCTRL                 &kp Z  &kp X  &kp C         &kp D        &kp V                        &kp K        &kp H        &kp COMMA     &kp DOT  &kp FSLH  &kp ESC
-                                        &kp LEFT_GUI  &sf 2 SPACE  &sf 2 ENTER                  &sf 3 ENTER  &sf 3 SPACE  &kp LEFT_ALT
+&kp TAB                     &quit  &kp W     &kp F         &kp P        &kp B        &trans  &trans  &kp J        &kp L        &um_U          &kp Y    &kp SEMI  &kp BSPC
+&td LEFT_CONTROL BACKSPACE  &um_A  &refresh  &um_S         &kp T        &kp G        &trans  &trans  &kp M        &kp N        &kp E          &kp I    &um_O     &kp SQT
+&kp LEFT_SHIFT              &kp Z  &kp X     &kp C         &kp D        &kp V                        &kp K        &kp H        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
+                                             &kp LEFT_GUI  &sf 2 SPACE  &sf 2 ENTER                  &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
             >;
 
             label = "COLEMAK";
