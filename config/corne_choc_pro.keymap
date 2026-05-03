@@ -30,7 +30,8 @@
             bindings = <&kp A>, <&kp RA(Q)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LALT)>;
+            mods = <(MOD_RALT)>;
+            keep-mods = <(MOD_RALT)>;
         };
 
         um_S: um_S {
@@ -39,7 +40,8 @@
             bindings = <&kp S>, <&kp RA(S)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LALT)>;
+            mods = <(MOD_RALT)>;
+            keep-mods = <(MOD_RALT)>;
         };
 
         um_U: um_U {
@@ -48,7 +50,8 @@
             bindings = <&kp U>, <&kp RA(Y)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LALT)>;
+            mods = <(MOD_RALT)>;
+            keep-mods = <(MOD_RALT)>;
         };
 
         um_O: um_O {
@@ -57,7 +60,8 @@
             bindings = <&kp O>, <&kp RA(P)>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LALT)>;
+            mods = <(MOD_RALT)>;
+            keep-mods = <(MOD_RALT)>;
         };
 
         sf: space_fn {
@@ -134,10 +138,10 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&kp TAB                     &quit  &kp W  &kp E     &refresh     &kp T      &kp C_MUTE  &kp C_PP  &kp Y        &um_U        &kp I          &um_O    &kp P     &kp BSPC
-&td LEFT_CONTROL BACKSPACE  &um_A  &um_S  &kp D     &kp F        &kp G      &kp LALT    &kp RALT  &kp H        &kp J        &kp K          &kp L    &kp SEMI  &kp SQT
-&kp LEFT_SHIFT              &kp Z  &kp X  &kp C     &kp V        &kp B                            &kp N        &kp M        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
-                                          &kp LGUI  &sf 2 SPACE  &sf 2 RET                        &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
+&kp TAB                     &quit  &kp W  &kp E     &refresh     &kp T      &trans  &trans  &kp Y        &um_U        &kp I          &um_O    &kp P     &kp BSPC
+&td LEFT_CONTROL BACKSPACE  &um_A  &um_S  &kp D     &kp F        &kp G      &trans  &trans  &kp H        &kp J        &kp K          &kp L    &kp SEMI  &kp SQT
+&kp LEFT_SHIFT              &kp Z  &kp X  &kp C     &kp V        &kp B                      &kp N        &kp M        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
+                                          &kp LGUI  &sf 2 SPACE  &sf 2 RET                  &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
             >;
         };
 
@@ -162,10 +166,10 @@
             //                    | GUI |     | SPC   |        | ENT   |     | ALT |
 
             bindings = <
-&trans  &kp N1        &kp N2           &kp N3        &kp N4        &kp N5          &kp LCTRL  &kp RCTRL  &kp N6    &kp N7    &kp N8  &kp N9     &kp N0  &kp DELETE
-&trans  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &kp LALT   &kp RALT   &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
-&trans  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                        &trans    &trans    &trans  &trans     &trans  &trans
-                                       &trans        &trans        &trans                                &trans    &trans    &trans
+&trans  &kp N1        &kp N2           &kp N3        &kp N4        &kp N5          &trans  &trans  &kp N6    &kp N7    &kp N8  &kp N9     &kp N0  &kp DELETE
+&trans  &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &trans  &trans
+&trans  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &trans    &trans    &trans  &trans     &trans  &trans
+                                       &trans        &trans        &trans                          &trans    &trans    &trans
             >;
         };
 
@@ -179,17 +183,17 @@
             //                    | GUI |     | SPC |               | ENT |     | ALT |
 
             bindings = <
-&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp LCTRL  &kp RCTRL  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
-&trans  &trans    &trans  &trans    &trans    &trans     &kp LALT   &kp RALT   &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
-&trans  &trans    &trans  &trans    &trans    &trans                           &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
-                          &trans    &trans    &trans                           &trans     &trans     &trans
+&trans  &kp EXCL  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &trans  &trans  &kp CARET  &kp AMPS   &kp ASTRK  &kp LPAR  &kp RPAR  &kp BSPC
+&trans  &trans    &trans  &trans    &trans    &trans     &trans  &trans  &kp MINUS  &kp EQUAL  &kp LBKT   &kp RBKT  &kp BSLH  &kp GRAVE
+&trans  &trans    &trans  &trans    &trans    &trans                     &kp UNDER  &kp PLUS   &kp LBRC   &kp RBRC  &kp PIPE  &kp TILDE
+                          &trans    &trans    &trans                     &trans     &trans     &trans
             >;
         };
 
         adjust_layer {
             display-name = "ADJUST";
             bindings = <
-&kp F1      &kp F2        &kp F3           &kp F4        &kp F5        &kp F6          &trans  &kp F7  &kp F7  &kp F8     &kp F9  &kp F10  &kp F11  &kp F12
+&kp F1      &kp F2        &kp F3           &kp F4        &kp F5        &kp F6          &trans  &trans  &kp F7  &kp F8     &kp F9  &kp F10  &kp F11  &kp F12
 &tog_on 1   &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &trans  &trans     &trans  &trans   &trans   &trans
 &tog_off 1  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &trans  &win_mute  &trans  &trans   &trans   &trans
                                            &trans        &trans        &trans                          &trans  &trans     &trans
