@@ -116,10 +116,10 @@
             mods = <(MOD_LCTL)>;
         };
 
-        hml: hml {
+        hml_a: hml_a {
             compatible = "zmk,behavior-hold-tap";
-            label = "HML";
-            bindings = <&none>, <&none>;
+            label = "HML_A";
+            bindings = <&um_A>, <&kp>;
 
             #binding-cells = <2>;
             hold-trigger-key-positions = <39 7 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45 8 9 10 11 12 13>;
@@ -131,10 +131,10 @@
             tapping-term-ms = <280>;
         };
 
-        hmr: hmr {
+        hmr_u: hmr_u {
             compatible = "zmk,behavior-hold-tap";
-            label = "HMR";
-            bindings = <&none>, <&none>;
+            label = "HMR_U";
+            bindings = <&um_U>, <&kp>;
 
             #binding-cells = <2>;
             flavor = "balanced";
@@ -151,6 +151,66 @@
             label = "TD_TAB_ESC";
             #binding-cells = <0>;
             bindings = <&kp TAB>, <&kp ESC>;
+        };
+
+        hml_s: hml_s {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML_S";
+            bindings = <&um_S>, <&kp>;
+
+            #binding-cells = <2>;
+            hold-trigger-key-positions = <39 7 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45 8 9 10 11 12 13>;
+            flavor = "balanced";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <125>;
+            quick-tap-ms = <175>;
+            tapping-term-ms = <280>;
+        };
+
+        hmr_o: hmr_o {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR_O";
+            bindings = <&um_O>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <125>;
+            quick-tap-ms = <175>;
+            tapping-term-ms = <280>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 40 41 42>;
+        };
+
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            hold-trigger-key-positions = <39 7 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45 8 9 10 11 12 13>;
+            flavor = "balanced";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <125>;
+            quick-tap-ms = <175>;
+            tapping-term-ms = <280>;
+        };
+
+        hmr: hmr {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <125>;
+            quick-tap-ms = <175>;
+            tapping-term-ms = <280>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 40 41 42>;
         };
     };
 
@@ -203,10 +263,10 @@
 
         colemak_layer {
             bindings = <
-&kp TAB                           &quit  &kp W     &kp F         &kp P        &kp B        &trans  &trans  &kp J        &kp L        &um_U          &kp Y    &kp SEMI  &kp BSPC
-&hold_tap LEFT_CONTROL BACKSPACE  &um_A  &refresh  &um_S         &kp T        &kp G        &trans  &trans  &kp M        &kp N        &kp E          &kp I    &um_O     &kp SQT
-&kp LEFT_SHIFT                    &kp Z  &kp X     &kp C         &kp D        &kp V                        &kp K        &kp H        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
-                                                   &kp LEFT_GUI  &sf 2 SPACE  &sf 2 ENTER                  &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
+&kp TAB                           &kp Q              &kp W             &kp F           &kp P         &kp B      &trans  &trans  &kp J        &kp L            &um_U         &kp Y             &kp SEMI            &kp BSPC
+&hold_tap LEFT_CONTROL BACKSPACE  &hml_a 0 LEFT_GUI  &hml R RIGHT_ALT  &hml_s 0 RCTRL  &hml T RSHFT  &kp G      &trans  &trans  &kp M        &hmr N LSHFT     &hmr E LCTRL  &hmr I RIGHT_ALT  &hmr_o 0 RIGHT_GUI  &kp SQT
+&kp LEFT_SHIFT                    &kp Z              &kp X             &kp C           &kp D         &kp V                      &kp K        &kp H            &kp COMMA     &kp DOT           &kp FSLH            &kp ESC
+                                                                       &kp ESC         &lt 2 SPACE   &lt 2 TAB                  &lt 3 ENTER  &lt 3 BACKSPACE  &kp DEL
             >;
 
             label = "COLEMAK";
@@ -225,7 +285,7 @@
 &td_tab_esc                       &quit  &kp W  &kp E     &refresh     &kp T      &trans  &trans  &kp Y        &um_U        &kp I          &um_O    &kp P     &kp BSPC
 &hold_tap LEFT_CONTROL BACKSPACE  &um_A  &um_S  &kp D     &kp F        &kp G      &trans  &trans  &kp H        &kp J        &kp K          &kp L    &kp SEMI  &kp SQT
 &kp LEFT_SHIFT                    &kp Z  &kp X  &kp C     &kp V        &kp B                      &kp N        &kp M        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
-                                                &kp LGUI  &sf 2 SPACE  &sf 2 RET                  &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
+                                                &kp LGUI  &lt 2 SPACE  &lt 2 RET                  &lt 3 ENTER  &lt 3 SPACE  &kp RIGHT_ALT
             >;
         };
 
