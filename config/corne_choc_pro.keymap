@@ -20,6 +20,7 @@
         quit_program {
             bindings = <&kp LA(F4)>;
             key-positions = <40 1>;
+            layers = <1 0>;
         };
     };
 
@@ -200,6 +201,17 @@
     keymap {
         compatible = "zmk,keymap";
 
+        colemak_layer {
+            bindings = <
+&kp TAB                           &quit  &kp W     &kp F         &kp P        &kp B        &trans  &trans  &kp J        &kp L        &um_U          &kp Y    &kp SEMI  &kp BSPC
+&hold_tap LEFT_CONTROL BACKSPACE  &um_A  &refresh  &um_S         &kp T        &kp G        &trans  &trans  &kp M        &kp N        &kp E          &kp I    &um_O     &kp SQT
+&kp LEFT_SHIFT                    &kp Z  &kp X     &kp C         &kp D        &kp V                        &kp K        &kp H        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
+                                                   &kp LEFT_GUI  &sf 2 SPACE  &sf 2 ENTER                  &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
+            >;
+
+            label = "COLEMAK";
+        };
+
         qwerty_layer {
             display-name = "QWERTY";
 
@@ -215,17 +227,6 @@
 &kp LEFT_SHIFT                    &kp Z  &kp X  &kp C     &kp V        &kp B                      &kp N        &kp M        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
                                                 &kp LGUI  &sf 2 SPACE  &sf 2 RET                  &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
             >;
-        };
-
-        colemak_layer {
-            bindings = <
-&kp TAB                           &quit  &kp W     &kp F         &kp P        &kp B        &trans  &trans  &kp J        &kp L        &um_U          &kp Y    &kp SEMI  &kp BSPC
-&hold_tap LEFT_CONTROL BACKSPACE  &um_A  &refresh  &um_S         &kp T        &kp G        &trans  &trans  &kp M        &kp N        &kp E          &kp I    &um_O     &kp SQT
-&kp LEFT_SHIFT                    &kp Z  &kp X     &kp C         &kp D        &kp V                        &kp K        &kp H        &kp COMMA      &kp DOT  &kp FSLH  &kp ESC
-                                                   &kp LEFT_GUI  &sf 2 SPACE  &sf 2 ENTER                  &sf 3 ENTER  &sf 3 SPACE  &kp RIGHT_ALT
-            >;
-
-            label = "COLEMAK";
         };
 
         lower_layer {
