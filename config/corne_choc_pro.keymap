@@ -212,6 +212,56 @@
             tapping-term-ms = <280>;
             hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 40 41 42>;
         };
+
+        rgb_tog: rgb_tog {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RGB_TOG";
+            bindings = <&rgb_ug RGB_TOG>, <&rgb_ug RGB_OFF>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        rgb_mod: rgb_mod {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RGB_MOD";
+            bindings = <&rgb_ug RGB_EFF>, <&rgb_ug RGB_EFR>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        rgb_hue: rgb_hue {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RGB_HUE";
+            bindings = <&rgb_ug RGB_HUI>, <&rgb_ug RGB_HUD>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        rgb_sat: rgb_sat {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RGB_SAT";
+            bindings = <&rgb_ug RGB_SAI>, <&rgb_ug RGB_SAD>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+
+        rgb_val: rgb_val {
+            compatible = "zmk,behavior-mod-morph";
+            label = "RGB_VAL";
+            bindings = <&rgb_ug RGB_SPI>, <&rgb_ug RGB_SPD>;
+
+            #binding-cells = <0>;
+            mods = <(MOD_RSFT|MOD_LSFT)>;
+            keep-mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     macros {
@@ -265,8 +315,8 @@
             bindings = <
 &kp TAB                           &kp Q                 &kp W             &kp F               &kp P          &kp B      &trans  &trans  &kp J        &kp L            &um_U         &kp Y             &kp SEMI               &kp BSPC
 &hold_tap LEFT_CONTROL BACKSPACE  &hml_a LGUI LEFT_GUI  &hml RIGHT_ALT R  &hml_s LCTRL RCTRL  &hml RSHIFT T  &kp G      &trans  &trans  &kp M        &hmr LSHIFT N    &hmr LCTRL E  &hmr RIGHT_ALT I  &hmr_o RGUI RIGHT_GUI  &kp SQT
-&kp LEFT_SHIFT                    &kp Z                 &kp X             &kp C               &kp D          &kp V                      &kp K        &kp H            &kp COMMA     &kp DOT           &kp FSLH               &kp ESC
-                                                                          &kp ESC             &lt 2 SPACE    &lt 2 TAB                  &lt 4 ENTER  &lt 3 BACKSPACE  &kp DEL
+&kp LEFT_SHIFT                    &kp Z                 &kp X             &kp C               &kp D          &kp V                      &kp K        &kp H            &kp COMMA     &kp DOT           &kp FSLH               &kp RSHFT
+                                                                          &lt 6 ESC           &lt 2 SPACE    &lt 2 TAB                  &lt 4 ENTER  &lt 3 BACKSPACE  &lt 5 DEL
             >;
 
             label = "COLEMAK";
@@ -282,10 +332,10 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&td_tab_esc                       &kp Q          &kp W               &kp E         &refresh       &kp T      &trans  &trans  &kp Y        &um_U          &kp I          &um_O             &kp P           &kp BSPC
-&hold_tap LEFT_CONTROL BACKSPACE  &hml_a LGUI 0  &hml_s RIGHT_ALT 0  &hml LCTRL D  &hml LSHIFT F  &kp G      &trans  &trans  &kp H        &hmr RSHIFT J  &hmr RCTRL K   &hmr RIGHT_ALT L  &hmr RGUI SEMI  &kp SQT
-&kp LEFT_SHIFT                    &kp Z          &kp X               &kp C         &kp V          &kp B                      &kp N        &kp M          &kp COMMA      &kp DOT           &kp FSLH        &kp ESC
-                                                                     &kp ESC       &lt 2 SPACE    &lt 2 TAB                  &lt 4 ENTER  &lt 3 SPACE    &kp RIGHT_ALT
+&td_tab_esc                       &kp Q          &kp W               &kp E         &refresh       &kp T      &trans  &trans  &kp Y        &um_U            &kp I         &um_O             &kp P           &kp BSPC
+&hold_tap LEFT_CONTROL BACKSPACE  &hml_a LGUI 0  &hml_s RIGHT_ALT 0  &hml LCTRL D  &hml LSHIFT F  &kp G      &trans  &trans  &kp H        &hmr RSHIFT J    &hmr RCTRL K  &hmr RIGHT_ALT L  &hmr RGUI SEMI  &kp SQT
+&kp LEFT_SHIFT                    &kp Z          &kp X               &kp C         &kp V          &kp B                      &kp N        &kp M            &kp COMMA     &kp DOT           &kp FSLH        &kp RSHFT
+                                                                     &lt 6 ESC     &lt 2 SPACE    &lt 2 TAB                  &lt 4 ENTER  &lt 3 BACKSPACE  &lt 5 DEL
             >;
         };
 
@@ -333,23 +383,26 @@
             >;
         };
 
-        adjust_layer {
-            display-name = "ADJUST";
+        fun_layer {
+            display-name = "FUN";
             bindings = <
-&kp F1      &kp F2        &kp F3           &kp F4        &kp F5        &kp F6          &trans  &trans  &kp F7            &kp F8      &kp F9        &kp F10       &kp F11     &kp F12
-&tog_on 1   &bt BT_SEL 0  &bt BT_SEL 1     &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &kp C_MUTE        &kp C_PREV  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT  &none
-&tog_off 1  &bt BT_CLR    &rgb_ug RGB_TOG  &sys_reset    &bootloader   &studio_unlock                  &kp C_PLAY_PAUSE  &win_mute   &none         &none         &none       &none
-                                           &trans        &trans        &trans                          &trans            &trans      &trans
+&none  &kp F12  &kp F7  &kp F8     &kp F9     &kp PRINTSCREEN  &none  &none  &none  &none       &none      &none     &none     &none
+&none  &kp F11  &kp F4  &kp F5     &kp F6     &kp SCROLLLOCK   &none  &none  &none  &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
+&none  &kp F10  &kp F1  &kp F2     &kp F3     &kp PAUSE_BREAK                &none  &none       &none      &none     &none     &none
+                        &kp K_APP  &kp SPACE  &kp TAB                        &none  &none       &trans
+            >;
+        };
+
+        media_layer {
+            display-name = "MEDIA";
+            bindings = <
+&bt BT_CLR  &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &trans  &trans  &rgb_tog    &rgb_mod          &rgb_hue      &rgb_sat      &rgb_val    &none
+&tog_on 1   &kp LGUI      &kp RALT      &kp RCTRL     &kp RSHFT     &none           &trans  &trans  &kp C_MUTE  &kp C_PREV        &kp C_VOL_DN  &kp C_VOL_UP  &kp C_NEXT  &none
+&tog_off 1  &none         &none         &sys_reset    &bootloader   &studio_unlock                  &none       &win_mute         &none         &none         &none       &none
+                                        &trans        &none         &none                           &kp C_STOP  &kp C_PLAY_PAUSE  &kp C_MUTE
             >;
         };
     };
 
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        ADJUST {
-            if-layers = <2 3>;
-            then-layer = <5>;
-        };
-    };
+    conditional_layers { compatible = "zmk,conditional-layers"; };
 };
