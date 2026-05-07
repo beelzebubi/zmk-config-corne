@@ -266,7 +266,7 @@
 &kp TAB                           &kp Q                 &kp W             &kp F               &kp P          &kp B      &trans  &trans  &kp J        &kp L            &um_U         &kp Y             &kp SEMI               &kp BSPC
 &hold_tap LEFT_CONTROL BACKSPACE  &hml_a LGUI LEFT_GUI  &hml RIGHT_ALT R  &hml_s LCTRL RCTRL  &hml RSHIFT T  &kp G      &trans  &trans  &kp M        &hmr LSHIFT N    &hmr LCTRL E  &hmr RIGHT_ALT I  &hmr_o RGUI RIGHT_GUI  &kp SQT
 &kp LEFT_SHIFT                    &kp Z                 &kp X             &kp C               &kp D          &kp V                      &kp K        &kp H            &kp COMMA     &kp DOT           &kp FSLH               &kp ESC
-                                                                          &kp ESC             &lt 2 SPACE    &lt 2 TAB                  &lt 3 ENTER  &lt 3 BACKSPACE  &kp DEL
+                                                                          &kp ESC             &lt 2 SPACE    &lt 2 TAB                  &lt 4 ENTER  &lt 3 BACKSPACE  &kp DEL
             >;
 
             label = "COLEMAK";
@@ -282,10 +282,10 @@
             //                    | GUI | LWR | SPC |               | ENT | RSE  | ALT |
 
             bindings = <
-&td_tab_esc                       &quit          &kp W               &kp E         &refresh       &kp T      &trans  &trans  &kp Y        &um_U          &kp I          &um_O             &kp P           &kp BSPC
+&td_tab_esc                       &kp Q          &kp W               &kp E         &refresh       &kp T      &trans  &trans  &kp Y        &um_U          &kp I          &um_O             &kp P           &kp BSPC
 &hold_tap LEFT_CONTROL BACKSPACE  &hml_a LGUI 0  &hml_s RIGHT_ALT 0  &hml LCTRL D  &hml LSHIFT F  &kp G      &trans  &trans  &kp H        &hmr RSHIFT J  &hmr RCTRL K   &hmr RIGHT_ALT L  &hmr RGUI SEMI  &kp SQT
 &kp LEFT_SHIFT                    &kp Z          &kp X               &kp C         &kp V          &kp B                      &kp N        &kp M          &kp COMMA      &kp DOT           &kp FSLH        &kp ESC
-                                                                     &kp LGUI      &lt 2 SPACE    &lt 2 RET                  &lt 3 ENTER  &lt 3 SPACE    &kp RIGHT_ALT
+                                                                     &kp ESC       &lt 2 SPACE    &lt 2 TAB                  &lt 4 ENTER  &lt 3 SPACE    &kp RIGHT_ALT
             >;
         };
 
@@ -316,10 +316,20 @@
             //                    | GUI |     | SPC |               | ENT |     | ALT |
 
             bindings = <
-&trans  &kp LEFT_BRACKET  &kp N7  &kp N8     &kp N9  &kp RIGHT_BRACKET  &trans  &trans  &none  &none       &none      &none     &none     &none
-&trans  &kp SEMI          &kp N4  &kp N5     &kp N6  &kp EQUAL          &trans  &trans  &none  &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
-&trans  &kp GRAVE         &kp N1  &kp N2     &kp N3  &kp MINUS                          &none  &none       &none      &none     &none     &none
-                                  &kp COMMA  &kp N0  &kp DOT                            &none  &trans      &none
+&none  &kp LEFT_BRACKET  &kp N7  &kp N8     &kp N9  &kp RIGHT_BRACKET  &none  &none  &none  &none       &none      &none     &none     &none
+&none  &kp SEMI          &kp N4  &kp N5     &kp N6  &kp EQUAL          &none  &none  &none  &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
+&none  &kp GRAVE         &kp N1  &kp N2     &kp N3  &kp MINUS                        &none  &none       &none      &none     &none     &none
+                                 &kp COMMA  &kp N0  &kp DOT                          &none  &trans      &none
+            >;
+        };
+
+        sym_layer {
+            display-name = "SYM";
+            bindings = <
+&none  &kp LBRC   &kp AMPS  &kp ASTERISK  &kp LPAR   &kp RBRC   &none  &none  &none   &none       &none      &none     &none     &none
+&none  &kp COLON  &kp DLLR  &kp PRCNT     &kp CARET  &kp PLUS   &none  &none  &none   &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
+&none  &kp TILDE  &kp EXCL  &kp AT        &kp HASH   &kp PIPE                 &none   &none       &none      &none     &none     &none
+                            &kp LPAR      &kp RPAR   &kp UNDER                &trans  &none       &none
             >;
         };
 
@@ -339,7 +349,7 @@
 
         ADJUST {
             if-layers = <2 3>;
-            then-layer = <4>;
+            then-layer = <5>;
         };
     };
 };
