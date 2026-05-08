@@ -14,16 +14,6 @@
 };
 
 / {
-    combos {
-        compatible = "zmk,combos";
-
-        quit_program {
-            bindings = <&kp LA(F4)>;
-            key-positions = <40 1>;
-            layers = <1 0>;
-        };
-    };
-
     behaviors {
         um_A: um_A {
             compatible = "zmk,behavior-mod-morph";
@@ -98,6 +88,13 @@
             flavor = "tap-preferred";
         };
 
+        td_tab_esc: td_tab_esc {
+            compatible = "zmk,behavior-tap-dance";
+            label = "TD_TAB_ESC";
+            #binding-cells = <0>;
+            bindings = <&kp TAB>, <&kp ESC>;
+        };
+
         quit: quit_programm {
             compatible = "zmk,behavior-mod-morph";
             label = "QUIT";
@@ -114,73 +111,6 @@
 
             #binding-cells = <0>;
             mods = <(MOD_LCTL)>;
-        };
-
-        hml_a: hml_a {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HML_A";
-            bindings = <&kp>, <&um_A>;
-
-            #binding-cells = <2>;
-            hold-trigger-key-positions = <39 7 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45 8 9 10 11 12 13>;
-            flavor = "balanced";
-            hold-while-undecided;
-            hold-trigger-on-release;
-            require-prior-idle-ms = <125>;
-            quick-tap-ms = <175>;
-            tapping-term-ms = <280>;
-        };
-
-        hmr_u: hmr_u {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HMR_U";
-            bindings = <&kp>, <&um_U>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            hold-while-undecided;
-            hold-trigger-on-release;
-            require-prior-idle-ms = <125>;
-            quick-tap-ms = <175>;
-            tapping-term-ms = <280>;
-            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 40 41 42>;
-        };
-
-        td_tab_esc: td_tab_esc {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TD_TAB_ESC";
-            #binding-cells = <0>;
-            bindings = <&kp TAB>, <&kp ESC>;
-        };
-
-        hml_s: hml_s {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HML_S";
-            bindings = <&kp>, <&um_S>;
-
-            #binding-cells = <2>;
-            hold-trigger-key-positions = <39 7 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45 8 9 10 11 12 13>;
-            flavor = "balanced";
-            hold-while-undecided;
-            hold-trigger-on-release;
-            require-prior-idle-ms = <125>;
-            quick-tap-ms = <175>;
-            tapping-term-ms = <280>;
-        };
-
-        hmr_o: hmr_o {
-            compatible = "zmk,behavior-hold-tap";
-            label = "HMR_O";
-            bindings = <&kp>, <&um_O>;
-
-            #binding-cells = <2>;
-            flavor = "balanced";
-            hold-while-undecided;
-            hold-trigger-on-release;
-            require-prior-idle-ms = <125>;
-            quick-tap-ms = <175>;
-            tapping-term-ms = <280>;
-            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 40 41 42>;
         };
 
         hml: hml {
@@ -202,6 +132,51 @@
             compatible = "zmk,behavior-hold-tap";
             label = "HMR";
             bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            flavor = "balanced";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <125>;
+            quick-tap-ms = <175>;
+            tapping-term-ms = <280>;
+            hold-trigger-key-positions = <0 1 2 3 4 5 6 14 15 16 17 18 19 20 28 29 30 31 32 33 40 41 42>;
+        };
+
+        hml_a: hml_a {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML_A";
+            bindings = <&kp>, <&um_A>;
+
+            #binding-cells = <2>;
+            hold-trigger-key-positions = <39 7 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45 8 9 10 11 12 13>;
+            flavor = "balanced";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <125>;
+            quick-tap-ms = <175>;
+            tapping-term-ms = <280>;
+        };
+
+        hml_s: hml_s {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML_S";
+            bindings = <&kp>, <&um_S>;
+
+            #binding-cells = <2>;
+            hold-trigger-key-positions = <39 7 21 22 23 24 25 26 27 34 35 36 37 38 39 43 44 45 8 9 10 11 12 13>;
+            flavor = "balanced";
+            hold-while-undecided;
+            hold-trigger-on-release;
+            require-prior-idle-ms = <125>;
+            quick-tap-ms = <175>;
+            tapping-term-ms = <280>;
+        };
+
+        hmr_o: hmr_o {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HMR_O";
+            bindings = <&kp>, <&um_O>;
 
             #binding-cells = <2>;
             flavor = "balanced";
@@ -314,7 +289,7 @@
         colemak_layer {
             bindings = <
 &kp TAB                           &kp Q                 &kp W             &kp F               &kp P          &kp B      &trans  &trans  &kp J        &kp L            &um_U         &kp Y             &kp SEMI               &kp BSPC
-&hold_tap LEFT_CONTROL BACKSPACE  &hml_a LGUI LEFT_GUI  &hml RIGHT_ALT R  &hml_s LCTRL RCTRL  &hml RSHIFT T  &kp G      &trans  &trans  &kp M        &hmr LSHIFT N    &hmr LCTRL E  &hmr RIGHT_ALT I  &hmr_o RGUI RIGHT_GUI  &kp SQT
+&hold_tap LEFT_CONTROL BACKSPACE  &hml_a LGUI 0  &hml RIGHT_ALT R  &hml_s LCTRL 0   &hml RSHIFT T  &kp G      &trans  &trans  &kp M        &hmr LSHIFT N    &hmr LCTRL E  &hmr RIGHT_ALT I  &hmr_o RGUI RIGHT_GUI  &kp SQT
 &kp LEFT_SHIFT                    &kp Z                 &kp X             &kp C               &kp D          &kp V                      &kp K        &kp H            &kp COMMA     &kp DOT           &kp FSLH               &kp RSHFT
                                                                           &lt 6 ESC           &lt 2 SPACE    &lt 2 TAB                  &lt 4 ENTER  &lt 3 BACKSPACE  &lt 5 DEL
             >;
@@ -341,13 +316,6 @@
 
         navigation_layer {
             display-name = "NAV";
-
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  1  |  2  |  3  |  4  |  5    |  LCTRL | RCTRL |  6  |  7  |  8  |  9  |  0  | BSPC |
-            // | CTRL | BT1 | BT2 | BT3 | BT4 | BT5   |  LALT  | RALT  | LFT | DWN |  UP | RGT |     |      |
-            // | SHFT | BTCR| RGB | RST | BOOT| Unlock|        |       |     |     |     |     |     |      |
-            //                    | GUI |     | SPC   |        | ENT   |     | ALT |
-
             bindings = <
 &trans  &none      &none     &none      &none       &none   &trans  &trans  &win_redo  &kp HOME       &kp UP    &kp END    &kp PG_UP  &kp DELETE
 &trans  &kp LGUI   &kp RALT  &kp LCTRL  &kp LSHFT   &kp N0  &trans  &trans  &kp CAPS   &kp LEFT       &kp DOWN  &kp RIGHT  &kp PG_DN  &trans
@@ -358,13 +326,6 @@
 
         num_layer {
             display-name = "NUM";
-
-            // -----------------------------------------------------------------------------------------
-            // |  TAB |  !  |  @  |  #  |  $  |  %  | LCTRL | RCTRL |  ^  |  &  |  *  |  (  |  )  | BSPC |
-            // | CTRL |     |     |     |     |     |  LALT | RALT  |  -  |  =  |  [  |  ]  |  \  |  `   |
-            // | SHFT |     |     |     |     |     |               |  _  |  +  |  {  |  }  | "|" |  ~   |
-            //                    | GUI |     | SPC |               | ENT |     | ALT |
-
             bindings = <
 &none  &kp LEFT_BRACKET  &kp N7  &kp N8     &kp N9  &kp RIGHT_BRACKET  &none  &none  &none          &none       &none      &none     &none     &none
 &none  &kp SEMI          &kp N4  &kp N5     &kp N6  &kp EQUAL          &none  &none  &none          &kp RSHIFT  &kp RCTRL  &kp RALT  &kp RGUI  &none
